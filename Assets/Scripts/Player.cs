@@ -10,15 +10,17 @@ public class Player : MonoBehaviour
     [Tooltip("in meters per second")] [SerializeField] float ySpeed = 20f;
     [SerializeField] float maxXOffset = 11f;
     [SerializeField] float maxYOffset = 9f;
+    //pitch
     [SerializeField]float positionPitchFactor = -4f;
     [SerializeField] float controlPitchFactor = -15f;
-
+    //yaw
+    [SerializeField] float positionYawFactor = 4f;
+   //roll 
+    [SerializeField] float controlRollFactor = -15f;
+ 
     float xThrow, yThrow;
 
-    void Start()
-    {
-       
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -31,8 +33,10 @@ public class Player : MonoBehaviour
     private void Rotate()
     {
         float pitch=transform.localPosition.y * positionPitchFactor + yThrow * controlPitchFactor;
-        float yaw=0f;
-        float roll = 0f; ;
+
+        float yaw = transform.localPosition.x * positionYawFactor;
+       
+        float roll = xThrow * controlRollFactor;
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
