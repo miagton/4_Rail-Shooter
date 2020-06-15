@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 4288594156929110}
   - component: {fileID: 33073823830031208}
   - component: {fileID: 23841016204486338}
+  - component: {fileID: 2612498165465717719}
   m_Layer: 0
   m_Name: StarSparrow7
   m_TagString: Untagged
@@ -235,7 +236,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917106948373238}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -290,3 +291,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2612498165465717719
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917106948373238}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.608271, y: 1.76079, z: 12.307949}
+  m_Center: {x: 4.6629367e-13, y: -0.000015646217, z: -5.828671e-14}

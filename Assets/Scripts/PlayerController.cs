@@ -4,31 +4,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput; 
 
-public class Player : MonoBehaviour
-{
-    [Tooltip("in meters per second")]  [SerializeField] float xSpeed=20f;
-    [Tooltip("in meters per second")] [SerializeField] float ySpeed = 20f;
+public class PlayerController : MonoBehaviour
+{   [Header("General")]
+    [Tooltip("in meters per second")]  [SerializeField] float controlSpeed=20f;
     [SerializeField] float maxXOffset = 11f;
     [SerializeField] float maxYOffset = 9f;
-    //pitch
+    
+    [Header("Screen position based")]
     [SerializeField]float positionPitchFactor = -4f;
-    [SerializeField] float controlPitchFactor = -15f;
-    //yaw
     [SerializeField] float positionYawFactor = 4f;
-   //roll 
+    
+    [Header("Control throw based")]
+    [SerializeField] float controlPitchFactor = -15f;
     [SerializeField] float controlRollFactor = -15f;
- 
+   
     float xThrow, yThrow;
+    bool isControlEnabled = true;
+   
 
     
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Rotate();
+        if (isControlEnabled)
+        {
+         Move();
+         Rotate();
+        }
         
     }
+    void OnPlayerDeath()//called by string reference
+    {
+       
+        isControlEnabled = false;
+    }
+    
 
     private void Rotate()
     {
@@ -50,7 +61,7 @@ public class Player : MonoBehaviour
     float CountVerticalMove()
     {
          yThrow = CrossPlatformInputManager.GetAxis("Vertical");
-        float yOffset = yThrow * ySpeed * Time.deltaTime;
+        float yOffset = yThrow * controlSpeed * Time.deltaTime;
         float rawNewYPos = transform.localPosition.y + yOffset;
         float newYPos = Mathf.Clamp(rawNewYPos, -maxYOffset, maxYOffset);
         return newYPos;
@@ -59,9 +70,10 @@ public class Player : MonoBehaviour
     float CountHorizontalMove()
     {
          xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        float xOffset = xThrow * xSpeed * Time.deltaTime;
+        float xOffset = xThrow * controlSpeed * Time.deltaTime;
         float rawNewXPos = transform.localPosition.x + xOffset;
         float newXPos = Mathf.Clamp(rawNewXPos, -maxXOffset, maxXOffset);
         return newXPos;
     }
+    
 }
