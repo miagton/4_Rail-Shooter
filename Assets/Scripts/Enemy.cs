@@ -8,10 +8,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject explosionEffect = null;
     [SerializeField] Transform parent;
 
+    ScoreBoard scoreBoard;
+
     private void Start()
     {
         AddNoneTriggerBoxCollider();
-       
+        scoreBoard = FindObjectOfType<ScoreBoard>();
+
+
     }
 
     private void AddNoneTriggerBoxCollider()
@@ -28,6 +32,7 @@ public class Enemy : MonoBehaviour
             fx.transform.parent = parent;
 
         }
+        scoreBoard.ScoreHit();
         Destroy(gameObject);
     }
 }

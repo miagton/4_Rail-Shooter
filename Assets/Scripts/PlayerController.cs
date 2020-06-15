@@ -20,16 +20,21 @@ public class PlayerController : MonoBehaviour
    
     float xThrow, yThrow;
     bool isControlEnabled = true;
-   
 
-    
+    ScoreBoard scoreBoard;
+    private void Start()
+    {
+        scoreBoard = FindObjectOfType<ScoreBoard>();
+    }
+
 
     // Update is called once per frame
     void Update()
     {
         if (isControlEnabled)
         {
-         Move();
+            
+            Move();
          Rotate();
         }
         
