@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject explosionEffect = null;
     [SerializeField] Transform parent;
 
+    [SerializeField] int scorePerHit = 20;
+
     ScoreBoard scoreBoard;
 
     private void Start()
@@ -32,7 +34,7 @@ public class Enemy : MonoBehaviour
             fx.transform.parent = parent;
 
         }
-        scoreBoard.ScoreHit();
+        scoreBoard.ScoreHit(scorePerHit);
         Destroy(gameObject);
     }
 }
