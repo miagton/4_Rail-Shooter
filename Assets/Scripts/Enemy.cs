@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject explosionEffect = null;
     [SerializeField] Transform parent;
-
+    [SerializeField] int hitsLeft = 2;
     [SerializeField] int scorePerHit = 20;
 
     ScoreBoard scoreBoard;
@@ -28,13 +28,28 @@ public class Enemy : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        ProccesHit();
+        if (hitsLeft <= 0)
+        {
+            KillEnemy();
+
+        }
+    }
+
+    private void ProccesHit()
+    {
+        scoreBoard.ScoreHit(scorePerHit);
+        hitsLeft--;
+    }
+
+    private void KillEnemy()
+    {
         if (explosionEffect != null)
         {
-       GameObject fx= Instantiate(explosionEffect, transform.position,Quaternion.identity);
+            GameObject fx = Instantiate(explosionEffect, transform.position, Quaternion.identity);
             fx.transform.parent = parent;
 
         }
-        scoreBoard.ScoreHit(scorePerHit);
         Destroy(gameObject);
     }
 }

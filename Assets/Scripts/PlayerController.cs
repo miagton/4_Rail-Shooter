@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("in meters per second")]  [SerializeField] float controlSpeed=20f;
     [SerializeField] float maxXOffset = 11f;
     [SerializeField] float maxYOffset = 9f;
+    [SerializeField] GameObject[] lazers = null;
     
     [Header("Screen position based")]
     [SerializeField]float positionPitchFactor = -4f;
@@ -33,12 +34,15 @@ public class PlayerController : MonoBehaviour
     {
         if (isControlEnabled)
         {
-            
-            Move();
-         Rotate();
+          Move();
+          Rotate();
+          Shoot();
         }
         
     }
+
+   
+
     void OnPlayerDeath()//called by string reference
     {
        
@@ -80,5 +84,32 @@ public class PlayerController : MonoBehaviour
         float newXPos = Mathf.Clamp(rawNewXPos, -maxXOffset, maxXOffset);
         return newXPos;
     }
+    void Shoot()
+    {
+        if (CrossPlatformInputManager.GetButton("Fire"))
+        {
+            ActivateLazers();
+        }
+        else
+        {
+            DeactivateLazers();
+        }
+    }
+
+    private void ActivateLazers()
+    {
+        foreach(GameObject lazer in lazers)
+        {
+            lazer.SetActive(true);
+        }
+    }
+    private void DeactivateLazers()
+    {
+        foreach (GameObject lazer in lazers)
+        {
+            lazer.SetActive(false);
+        }
+    }
+
     
 }
