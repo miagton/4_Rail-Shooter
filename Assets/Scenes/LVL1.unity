@@ -6665,6 +6665,11 @@ PrefabInstance:
       propertyPath: CollisionModule.minKillSpeed
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 1092468658640209471, guid: 959ae77f8bc35254db9897f1c6f9ea65,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5198667125496513628, guid: 959ae77f8bc35254db9897f1c6f9ea65,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -6679,6 +6684,11 @@ PrefabInstance:
         type: 3}
       propertyPath: CollisionModule.minKillSpeed
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198667125496513628, guid: 959ae77f8bc35254db9897f1c6f9ea65,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5553338673695889968, guid: 959ae77f8bc35254db9897f1c6f9ea65,
         type: 3}
